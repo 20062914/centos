@@ -10,5 +10,4 @@ RUN	cd /opt/heer \
 		&& rm ./apache-tomcat-6.0.45.tar.gz \
 		&& rm -rf ./apache-tomcat-6.0.45/webapps/* \
 		&& mkdir ./server
-EVN CATALINA_HOME /opt/heer/apache-tomcat-6.0.45
-EVN
+ENV CATALINA_HOME /opt/heer/apache-tomcat-6.0.45
