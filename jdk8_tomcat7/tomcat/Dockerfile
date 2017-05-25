@@ -1,13 +1,14 @@
-FROM 20062914/centos
+FROM 20062914/centos7jdk8
 
 MAINTAINER lint <lint@heerit.com>
 
 
 
 RUN	cd /opt/heer \
-		&& wget "http://mirror.bit.edu.cn/apache/tomcat/tomcat-6/v6.0.45/bin/apache-tomcat-6.0.45.tar.gz" \
-		&& tar -xzvf ./apache-tomcat-6.0.45.tar.gz \
-		&& rm ./apache-tomcat-6.0.45.tar.gz \
-		&& rm -rf ./apache-tomcat-6.0.45/webapps/* \
+		&& wget "http://mirror.bit.edu.cn/apache/tomcat/tomcat-7/v7.0.78/bin/apache-tomcat-7.0.78.tar.gz" \
+		&& tar -xzvf ./apache-tomcat-7.0.78.tar.gz \
+		&& mv ./apache-tomcat-7.0.78 ./tomcat
+		&& rm ./apache-tomcat-7.0.78.tar.gz \
+		&& rm -rf ./tomcat/webapps/* \
 		&& mkdir ./server
-ENV CATALINA_HOME /opt/heer/apache-tomcat-6.0.45
+ENV CATALINA_HOME /opt/heer/tomcat
