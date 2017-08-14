@@ -5,12 +5,12 @@ MAINTAINER lint <lint@heerit.com>
 
 ENV LANG zh_CN.UTF-8 
 RUN rm -f /etc/localtime; ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime  \
+    && yum -y install kde-l10n-Chinese && yum -y reinstall glibc-common \
+    && localedef -c -f UTF-8 -i zh_CN zh_CN.utf8 \
     && yum update -y  \
-		&& yum install -y \
-    	tar \
-   		 wget  \
-		&& mkdir /opt/heer  \
-		&& cd /opt/heer \
+    && yum install -y tar wget  \
+    && mkdir /opt/heer  \
+    && cd /opt/heer \
     && wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/6u45-b06/jdk-6u45-linux-x64.bin" \
     && chmod 755 ./*  \
     && ./jdk-6u45-linux-x64.bin  \
